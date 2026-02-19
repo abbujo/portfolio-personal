@@ -1,0 +1,73 @@
+---
+const links = [
+    { name: "About", href: "#hero" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" },
+];
+---
+
+<nav class="sticky-nav">
+    <div class="nav-content">
+        <ul class="nav-links">
+            {
+                links.map((link) => (
+                    <li>
+                        <a href={link.href}>{link.name}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</nav>
+
+<style>
+    .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem;
+        transition: all 0.3s ease;
+        mix-blend-mode: difference; /* Ensures visibility on black/white */
+        color: #fff; /* Inverted by mix-blend-mode against black bg */
+        pointer-events: none; /* Let clicks pass through container */
+    }
+
+    .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        pointer-events: auto; /* Re-enable clicks on links */
+    }
+
+    .nav-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        opacity: 1;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .sticky-nav {
+            display: none; /* Hide on mobile for simplicity/space */
+        }
+    }
+</style>

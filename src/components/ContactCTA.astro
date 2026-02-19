@@ -1,0 +1,108 @@
+---
+import { personalInfo } from "../content/profile";
+import Section from "./Section.astro";
+
+const { email, availability } = personalInfo;
+---
+
+<Section id="contact" class="contact-section">
+    <div class="contact-content">
+        <h2 class="headline">Let's build something.</h2>
+        <p class="pitch">
+            I'm currently <strong>{availability.toLowerCase()}</strong>. If
+            you're looking for an engineer who cares about performance,
+            reliability, and clean architecture, I'd love to chat.
+        </p>
+
+        <div class="actions">
+            <a href={`mailto:${email}`} class="btn primary large"
+                >Drop me an email</a
+            >
+        </div>
+
+        <div class="meta">
+            <a
+                href="https://linkedin.com/in/abhishek-joshi"
+                target="_blank"
+                class="link">LinkedIn</a
+            >
+            <span class="divider">/</span>
+            <a href="https://github.com" target="_blank" class="link">GitHub</a>
+            <span class="divider">/</span>
+            <span class="loc">Melbourne, AU</span>
+        </div>
+    </div>
+</Section>
+
+<style>
+    .contact-section {
+        padding-bottom: 8rem; /* Extra space at bottom */
+    }
+
+    .contact-content {
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .headline {
+        font-size: 4rem;
+        letter-spacing: -0.04em;
+        line-height: 1;
+    }
+
+    .pitch {
+        font-size: 1.25rem;
+        opacity: 0.8;
+        max-width: 50ch;
+    }
+
+    .btn.large {
+        padding: 1.25rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .btn.primary {
+        background: var(--fg);
+        color: var(--bg);
+        border: 1px solid var(--fg);
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .btn.primary:hover {
+        opacity: 0.9;
+    }
+
+    .meta {
+        font-size: 0.875rem;
+        color: var(--fg);
+        opacity: 0.6;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .divider {
+        opacity: 0.5;
+    }
+
+    .link {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .link:hover {
+        color: var(--fg);
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .headline {
+            font-size: 3rem;
+        }
+    }
+</style>

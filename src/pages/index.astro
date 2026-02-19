@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Skills from "../components/Skills.astro";
+import Experience from "../components/Experience.astro";
+import ProjectsList from "../components/ProjectsList.astro";
+import EducationVisa from "../components/EducationVisa.astro";
+import PublicationsList from "../components/PublicationsList.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import { personalInfo } from "../content/profile";
+---
+
+<Layout title={`${personalInfo.name} | ${personalInfo.title}`}>
+	<Hero />
+	<Skills />
+	<Experience />
+	<ProjectsList />
+	<PublicationsList />
+	<EducationVisa />
+	<ContactCTA />
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>
+				&copy; {new Date().getFullYear()}
+				{personalInfo.name}. Reference layout design.
+			</p>
+		</div>
+	</footer>
+</Layout>
+
+<style>
+	.site-footer {
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+		font-size: 0.75rem;
+		opacity: 0.5;
+		text-align: center;
+	}
+</style>

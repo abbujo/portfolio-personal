@@ -1,0 +1,64 @@
+---
+import BentoGrid from "./BentoGrid.astro";
+import BentoCard from "./BentoCard.astro";
+import SectionHeader from "./SectionHeader.astro";
+import { education, visa } from "../content/profile";
+---
+
+<section id="education">
+    <BentoGrid>
+        <SectionHeader title="Education & Status" />
+
+        <!-- Education -->
+        {
+            education.map((edu) => (
+                <BentoCard colSpan={1} title={edu.year}>
+                    <div class="edu-content">
+                        <strong>{edu.degree}</strong>
+                        {edu.institution && <span>{edu.institution}</span>}
+                    </div>
+                </BentoCard>
+            ))
+        }
+
+        <!-- Visa Status -->
+        <BentoCard colSpan={1} title="Visa Status" class="visa-card">
+            <div class="visa-content">
+                <strong>{visa.status}</strong>
+                <p>{visa.rights}</p>
+            </div>
+        </BentoCard>
+    </BentoGrid>
+</section>
+
+<style>
+    .edu-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .edu-content strong {
+        font-size: 1rem;
+    }
+
+    .edu-content span {
+        font-size: 0.875rem;
+        opacity: 0.8;
+    }
+
+    .visa-card {
+        border-color: var(--fg); /* Highlight visa status slightly */
+    }
+
+    .visa-content strong {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .visa-content p {
+        margin: 0;
+        font-size: 0.875rem;
+        opacity: 0.8;
+    }
+</style>

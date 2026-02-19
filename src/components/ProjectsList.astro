@@ -1,0 +1,259 @@
+---
+import { projects } from "../content/profile";
+import Section from "./Section.astro";
+---
+
+<Section id="projects">
+    <h2 class="section-title">Selected Projects</h2>
+
+    <div class="projects-list">
+        {
+            projects.map((project, index) => (
+                <div class="project-card">
+                    <div class="card-image">
+                        {/* Use placeholder if image path invalid/missing in dev */}
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            class="thumbnail"
+                            loading="lazy"
+                        />
+                        {project.status === "offline" && (
+                            <div class="offline-overlay">Discontinued</div>
+                        )}
+                    </div>
+
+                    <div class="card-content">
+                        <div class="header">
+                            <div class="meta">
+                                <span class="category">{project.category}</span>
+                                <div class="title-row">
+                                    <h3 class="title">{project.title}</h3>
+                                    {project.link && (
+                                        <a
+                                            href={project.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="project-link"
+                                        >
+                                            {project.status === "offline"
+                                                ? "View Snapshot ↗"
+                                                : "Live ↗"}
+                                        </a>
+                                    )}
+                                </div>
+                                {project.client && (
+                                    <span class="client-name">
+                                        {project.client}
+                                    </span>
+                                )}
+                            </div>
+                            <div class="tags">
+                                {project.tags.slice(0, 3).map((tag) => (
+                                    <span class="tag-sm">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p class="description">{project.description}</p>
+
+                        {project.caseStudy && (
+                            <div class="case-study">
+                                <div class="cs-item">
+                                    <span class="cs-label">Problem:</span>{" "}
+                                    {project.caseStudy.problem}
+                                </div>
+                                <div class="cs-item">
+                                    <span class="cs-label">Solution:</span>{" "}
+                                    {project.caseStudy.solution}
+                                </div>
+                                <div class="cs-item">
+                                    <span class="cs-label">Result:</span>{" "}
+                                    {project.caseStudy.result}
+                                </div>
+                            </div>
+                        )}
+
+                        <ul class="highlights">
+                            {project.highlights.map((hl) => (
+                                <li>{hl}</li>
+                            ))}
+                        </ul>
+
+                        <div class="impact">
+                            <strong>Impact:</strong> {project.impact}
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</Section>
+
+<style>
+    .section-title {
+        margin-bottom: 4rem;
+    }
+
+    .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+    }
+
+    .project-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 5rem;
+    }
+
+    .project-card:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    @media (min-width: 900px) {
+        .project-card {
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: 4rem;
+        }
+    }
+
+    .card-image {
+        /* border: 1px solid var(--border); Removed */
+        /* aspect-ratio: 16/9; Removed to allow full height */
+        overflow: hidden;
+        /* background: var(--border); Removed */
+        position: relative;
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: auto; /* Allow natural height */
+        display: block;
+        /* filter: grayscale(100%); Removed to show color */
+        transition: transform 0.5s ease;
+    }
+
+    .offline-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(var(--bg-rgb), 0.9);
+        color: var(--fg);
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-top: 1px solid var(--border);
+    }
+
+    .project-card:hover .thumbnail {
+        transform: scale(1.03);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .category {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+    }
+
+    .title-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .title {
+        font-size: 1.75rem;
+        margin: 0;
+    }
+
+    .project-link {
+        font-size: 0.875rem;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        opacity: 0.7;
+    }
+
+    .project-link:hover {
+        opacity: 1;
+    }
+
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .tag-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid var(--border);
+    }
+
+    .description {
+        opacity: 0.9;
+        max-width: 60ch;
+    }
+
+    .highlights {
+        padding-left: 1.25rem;
+        opacity: 0.8;
+        font-size: 0.95rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .impact {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.9rem;
+    }
+
+    .client-name {
+        font-size: 0.875rem;
+        font-style: italic;
+        opacity: 0.8;
+        margin-top: -0.25rem;
+    }
+
+    .case-study {
+        border-left: 2px solid var(--fg);
+        padding-left: 1rem;
+        margin: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        opacity: 0.9;
+    }
+
+    .cs-label {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        margin-right: 0.25rem;
+    }
+</style>

@@ -1,0 +1,88 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+];
+---
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="#" class="logo">AJ</a>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                {
+                    navItems.map((item) => (
+                        <li>
+                            <a href={item.href} class="nav-link">
+                                {item.name}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <div class="actions">
+            <ThemeToggle />
+        </div>
+    </div>
+</header>
+
+<style>
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: var(--nav-height);
+        background: rgba(var(--bg-rgb), 0.85); /* Translucent background */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+    }
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between; /* Logo Left, Nav Center (or Right?) Reference says Nav Links inline. */
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        font-size: 1.25rem;
+    }
+
+    .nav {
+        display: none; /* Mobile hidden by default */
+    }
+
+    .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+
+    .nav-link:hover {
+        opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+        .nav {
+            display: block;
+        }
+    }
+</style>

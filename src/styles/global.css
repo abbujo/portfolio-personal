@@ -1,0 +1,110 @@
+:root {
+    /* Strict Black & White - No Hex Grays */
+    --black: 0, 0, 0;
+    --white: 255, 255, 255;
+
+    /* Light Theme Default */
+    --bg-rgb: var(--white);
+    --fg-rgb: var(--black);
+    
+    --bg: rgb(var(--bg-rgb));
+    --fg: rgb(var(--fg-rgb));
+    
+    /* 
+       Opacity Layers for Hierarchy 
+       Darker/Lighter variants are just black/white with opacity.
+    */
+    --border: rgba(var(--fg-rgb), 0.12);
+    --border-strong: rgba(var(--fg-rgb), 0.25);
+    --overlay: rgba(var(--fg-rgb), 0.04);
+    --overlay-strong: rgba(var(--fg-rgb), 0.08);
+
+    /* Spacing & Layout */
+    --max-width: 1100px;
+    --nav-height: 60px;
+}
+
+[data-theme="dark"] {
+    --bg-rgb: var(--black);
+    --fg-rgb: var(--white);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sharp Edges Everywhere */
+* {
+    border-radius: 0 !important;
+}
+
+/* Utility */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.5rem; letter-spacing: -0.03em; }
+h2 { font-size: 1.75rem; letter-spacing: -0.02em; }
+h3 { font-size: 1.25rem; letter-spacing: -0.01em; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+}

@@ -1,0 +1,119 @@
+---
+interface Props {
+    colSpan?: 1 | 2 | 3 | 4;
+    rowSpan?: 1 | 2 | 3;
+    title?: string;
+    href?: string;
+    class?: string;
+}
+
+const {
+    colSpan = 1,
+    rowSpan = 1,
+    title,
+    href,
+    class: className = "",
+} = Astro.props;
+---
+
+<div class={`bento-card col-span-${colSpan} row-span-${rowSpan} ${className}`}>
+    {
+        href ? (
+            <a href={href} class="card-link">
+                {title && <h3 class="card-title">{title}</h3>}
+                <slot />
+            </a>
+        ) : (
+            <div class="card-content">
+                {title && <h3 class="card-title">{title}</h3>}
+                <slot />
+            </div>
+        )
+    }
+</div>
+
+<style>
+    .bento-card {
+        background: var(--bg); /* Keep transparent/bg color */
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition:
+            border-color 0.3s ease,
+            transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento-card:hover {
+        border-color: var(--fg);
+        transform: translateY(-2px);
+    }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .card-link:hover {
+        text-decoration: none;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Grid Spans */
+    .col-span-1 {
+        grid-column: span 1;
+    }
+    .col-span-2 {
+        grid-column: span 1;
+    } /* Mobile default */
+    .col-span-3 {
+        grid-column: span 1;
+    } /* Mobile default */
+    .col-span-4 {
+        grid-column: span 1;
+    } /* Mobile default */
+
+    .row-span-1 {
+        grid-row: span 1;
+    }
+    .row-span-2 {
+        grid-row: span 1;
+    } /* Mobile default */
+
+    @media (min-width: 768px) {
+        .col-span-2 {
+            grid-column: span 2;
+        }
+        .row-span-2 {
+            grid-row: span 2;
+        }
+    }
+    @media (min-width: 1024px) {
+        .col-span-3 {
+            grid-column: span 3;
+        }
+        .col-span-4 {
+            grid-column: span 4;
+        }
+    }
+</style>

@@ -1,0 +1,79 @@
+---
+import { skills } from "../content/profile";
+import Section from "./Section.astro";
+---
+
+<Section id="skills">
+    <div class="skills-container">
+        <h2 class="section-title">Technical Skills</h2>
+
+        <div class="skills-grid">
+            {
+                skills.map((group) => (
+                    <div class="skill-group">
+                        <h3 class="group-title">{group.category}</h3>
+                        <div class="tags">
+                            {group.items.map((item) => (
+                                <span class="tag">{item}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Section>
+
+<style>
+    .skills-container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .section-title {
+        margin-bottom: 1rem;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+        .skills-grid {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 4rem;
+            row-gap: 3rem;
+        }
+    }
+
+    .group-title {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.8;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tag {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        transition: border-color 0.2s;
+    }
+
+    .tag:hover {
+        border-color: var(--fg);
+    }
+</style>
