@@ -9,21 +9,33 @@ import Section from "./Section.astro";
     <div class="publications-list">
         {
             publications.map((pub) => (
-                <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="pub-card"
-                >
+                <div class="pub-card">
                     <div class="pub-year">{pub.year}</div>
                     <div class="pub-content">
                         <h3 class="pub-title">
-                            {pub.title} <span class="arrow">↗</span>
+                            <a
+                                href={pub.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="pub-link"
+                            >
+                                {pub.title} <span class="arrow">↗</span>
+                            </a>
                         </h3>
                         <p class="pub-authors">{pub.authors}</p>
                         <p class="pub-venue">{pub.venue}</p>
+                        {pub.orcid && (
+                            <a
+                                href={pub.orcid}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="pub-orcid"
+                            >
+                                ORCID ↗
+                            </a>
+                        )}
                     </div>
-                </a>
+                </div>
             ))
         }
     </div>
@@ -45,14 +57,32 @@ import Section from "./Section.astro";
         gap: 2rem;
         padding: 2rem 0;
         border-bottom: 1px solid var(--border);
-        text-decoration: none;
-        color: inherit;
         transition: opacity 0.3s ease;
         align-items: baseline;
     }
 
-    .pub-card:hover {
+    .pub-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .pub-link:hover {
         opacity: 0.7;
+    }
+
+    .pub-orcid {
+        font-size: 0.875rem;
+        color: var(--fg);
+        opacity: 0.6;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.25rem;
+    }
+
+    .pub-orcid:hover {
+        opacity: 1;
+        text-decoration: underline;
     }
 
     .pub-year {

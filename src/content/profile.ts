@@ -29,8 +29,9 @@ export const personalInfo = {
     phone: "0481 422 769",
     email: "joshi.abj13@gmail.com",
     socials: {
-        linkedin: "https://linkedin.com/in/abhishek-joshi",
+        linkedin: "https://www.linkedin.com/in/joshiabj13/",
         github: "https://github.com/abhishek-joshi",
+        orcid: "https://orcid.org/0000-0003-2677-287X",
     },
     about: [
         "I am a Software Engineer with specific expertise in Golang, React, and AWS. My focus is on building scalable automated content systems and resilient cloud infrastructure.",
@@ -52,7 +53,8 @@ export const projects: Project[] = [
             "Designed a monorepo architecture with CI/CD for automated auditing."
         ],
         impact: "Enabled automated, comprehensive performance and accessibility auditing for static sites.",
-        image: "/images/projects/sitepulse.jpg",
+        image: "/images/projects/sitepulse.png",
+        link: "https://github.com/abbujo/SeoTool.git",
         status: "active"
     },
     {
@@ -129,7 +131,7 @@ export const experience = [
     {
         role: "Web Developer Intern",
         period: "Jan 2025 – Apr 2025",
-        company: "Tech Company",
+        company: "Stacked Learning",
         description: "Developed JS applications and managed defect lifecycles.",
         highlights: [
             "Contributed to frontend development using modern JavaScript frameworks.",
@@ -174,6 +176,7 @@ export const publications = [
         authors: "Ramesh, K., Ravishankaran, S., Joshi, A., Chandrasekaran, K.",
         year: "2017",
         venue: "Information, Communication and Computing Technology (ICICCT 2017)",
-        link: "https://doi.org/10.1007/978-981-10-6544-6_31"
+        link: "https://doi.org/10.1007/978-981-10-6544-6_31",
+        orcid: "https://orcid.org/0000-0003-2677-287X"
     }
 ];

@@ -11,7 +11,12 @@ import { projects } from "../content/profile";
 
         {
             projects.map((project) => (
-                <BentoCard colSpan={2} rowSpan={1} title={project.title}>
+                <BentoCard
+                    colSpan={2}
+                    rowSpan={1}
+                    title={project.title}
+                    href={project.link}
+                >
                     <div class="project-details">
                         <div class="stack">
                             {project.tags.map((tech) => (

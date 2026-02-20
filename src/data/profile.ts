@@ -52,7 +52,7 @@ export const projects: Project[] = [
             "Designed a monorepo architecture with CI/CD for automated auditing."
         ],
         impact: "Enabled automated, comprehensive performance and accessibility auditing for static sites.",
-        image: "/images/projects/sitepulse.jpg",
+        image: "/images/projects/sitepulse.png",
         status: "active"
     },
     {
@@ -124,7 +124,7 @@ export const experience = [
     {
         role: "Web Developer Intern",
         period: "Jan 2025 – Apr 2025",
-        company: "Tech Company",
+        company: "Stacked Learning",
         description: "Developed JS applications and managed defect lifecycles."
     },
     {
