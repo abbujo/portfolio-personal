@@ -43,6 +43,20 @@ export const personalInfo = {
 
 export const projects: Project[] = [
     {
+        title: "imgpipe (imgtool)",
+        category: "Full Stack Tooling",
+        description: "High-performance AVIF-only image pipeline for modern web projects.",
+        tags: ["React", "Express", "Node.js", "sharp", "CLI"],
+        highlights: [
+            "Engineered a full-stack application with a React frontend and Express backend API.",
+            "Developed a powerful CLI for fast, concurrent batch processing of folders and globs.",
+            "Implemented smart policies for automated, highly optimized AVIF conversions."
+        ],
+        impact: "Delivered a local, privacy-first tool targeting optimal mobile speeds and LCP.",
+        image: "/images/projects/imgpipe.png",
+        status: "active"
+    },
+    {
         title: "SitePulse",
         category: "Full Stack Tooling",
         description: "A high-performance SEO & Accessibility auditing tool with real-time reporting.",
