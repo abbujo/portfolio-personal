@@ -54,6 +54,7 @@ export const projects: Project[] = [
         ],
         impact: "Delivered a local, privacy-first tool targeting optimal mobile speeds and LCP.",
         image: "/images/projects/imgpipe.png",
+        link: "https://imgtool-psi.vercel.app/",
         status: "active"
     },
     {
