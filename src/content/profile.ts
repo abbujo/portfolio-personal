@@ -58,6 +58,22 @@ export const projects: Project[] = [
         status: "active"
     },
     {
+        title: "GCC Melbourne",
+        client: "Green Commercial Cleaning",
+        category: "B2B Website & SEO",
+        description: "An optimized, high-performance static marketing website architected to drive local commercial cleaning leads.",
+        tags: ["Astro", "Tailwind CSS", "TypeScript"],
+        highlights: [
+            "Engineered a scalable Static Site Generator (SSG) architecture with Astro v5 for ultra-fast performance.",
+            "Implemented a strict, token-based design system using Tailwind CSS v4 to ensure visual consistency.",
+            "Built environment-aware SEO strategies, including LocalBusiness JSON-LD schema and smart indexing rules."
+        ],
+        impact: "Delivered a premium, fast-loading digital presence established specifically for B2B lead generation.",
+        image: "/images/projects/1.png",
+        link: "https://www.gccmelbourne.com.au/",
+        status: "active"
+    },
+    {
         title: "SitePulse",
         category: "Full Stack Tooling",
         description: "A high-performance SEO & Accessibility auditing tool with real-time reporting.",
